@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mr. Solution — Happy 20th Birthday, Ali 🎂</title>
+<meta name="description" content="A personal cinematic birthday surprise for Ali — Mr. Solution." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- GLOBAL CANVAS FOR PARTICLES / STARS -->
+<!-- ============================================================ -->
+<canvas id="globalCanvas"></canvas>
+
+<!-- ============================================================ -->
+<!-- GLOBAL FLOATING HEARTS ATMOSPHERE LAYER -->
+<!-- ============================================================ -->
+<div id="floatingHeartsContainer" aria-hidden="true"></div>
+
+<!-- PAGE TRANSITION OVERLAY -->
+<div id="pageTransition" class="page-transition">
+<div class="transition-particles"></div>
+</div>
+
+<!-- MUSIC CONTROL -->
+<div id="musicControl" class="music-control hidden">
+  <button id="musicBtn" class="music-btn" aria-label="Toggle music" data-playing="false">
+    <span class="music-icon">♫</span>
+    <span class="music-label">SOUND ON</span>
+  </button>
+</div>
+
+<!-- HIDDEN AUDIO ELEMENT — single persistent instance -->
+<audio id="bgMusic" preload="auto" loop>
+  <source src="psyai-inner-distance-cinematic-atmosphere-472947.mp3" type="audio/mpeg">
+</audio>
+
+<!-- GLOBAL BACK NAVIGATION BUTTON (hidden on page 1) -->
+<div id="globalBackBtn" class="global-back-btn hidden" aria-label="Go to previous page">
+<button class="back-btn-inner" onclick="goToPrevPage()" aria-label="Previous page">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M19 12H5M12 5l-7 7 7 7"/>
+</svg>
+</button>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 1 — CINEMATIC BIRTHDAY SURPRISE (FINAL REDESIGN) -->
+<!-- ============================================================ -->
+<section id="page1" class="page active" data-page="1">
+<!-- Multi-Layer Cosmic Background Canvas -->
+<canvas class="page-canvas" id="canvas1"></canvas>
+
+<!-- Subtle Ambient Glow Backdrop Layer -->
+<div class="p1-ambient-glow" id="p1AmbientGlow"></div>
+<div class="p1-toast-notify" id="p1Toast">Let's go... ✨</div>
+
+<div class="page-content p1-content">
+<div class="p1-story-stage" id="p1StoryStage">
+
+<!-- STAGE 1: Opening Reflection -->
+<div class="p1-phase p1-phase-1" id="p1Phase1">
+<p class="p1-text-line" id="p1-p1-l1">Some people enter your life unexpectedly…</p>
+<p class="p1-text-line" id="p1-p1-l2">And somehow become the people you can always count on.</p>
+<p class="p1-text-line" id="p1-p1-l3">You don't plan for them.</p>
+<p class="p1-text-line" id="p1-p1-l4">You don't know they'll become important.</p>
+</div>
+
+<!-- STAGE 2: Birthday Celebration Reveal -->
+<div class="p1-phase p1-phase-2 hidden" id="p1Phase2">
+<p class="p1-text-line" id="p1-p2-l1">But today isn't just another day.</p>
+<p class="p1-text-line" id="p1-p2-l2">Someone special is turning 20.</p>
+<div class="p1-bday-title-wrap hidden" id="p1BdayTitle">
+<!-- Cinematic "20" Light Reveal -->
+<div class="p1-twenty-reveal" id="p1TwentyReveal">
+<div class="p1-twenty-glow-aura" id="p1TwentyGlowAura"></div>
+<div class="p1-twenty-number" id="p1TwentyNumber">20</div>
+<div class="p1-twenty-sweep" id="p1TwentySweep"></div>
+</div>
+<!-- "WELCOME TO YOUR 20s, ALI." milestone reveal -->
+<div class="p1-bday-heading-wrap" id="p1BdayHeadingWrap">
+  <div class="p1-bday-heading-aura" id="p1BdayHeadingAura"></div>
+  <h2 class="p1-bday-heading" id="p1BdayHeading">WELCOME TO YOUR 20s, ALI.</h2>
+  <div class="p1-bday-heading-sweep" id="p1BdayHeadingSweep"></div>
+</div>
+</div>
+</div>
+
+<!-- STAGE 3: Nickname Setup -->
+<div class="p1-phase p1-phase-3 hidden" id="p1Phase3">
+<p class="p1-text-line" id="p1-p3-l1">Everyone knows him as<span class="p1-highlight-white">Ali</span>.</p>
+<p class="p1-text-line" id="p1-p3-l2">Some call him<em>Hafiz Sahb</em>.</p>
+<p class="p1-text-line p1-text-bold" id="p1-p3-l3">But I have a name for him…</p>
+</div>
+
+<!-- STAGE 4: MR. SOLUTION Cinematic Light Sweep Reveal -->
+<div class="p1-phase p1-phase-4 hidden" id="p1Phase4">
+<div class="p1-title-light-container" id="p1TitleContainer">
+<div class="p1-light-beam" id="p1LightBeam"></div>
+<h1 class="p1-hero-title" id="p1HeroTitle">
+<span class="p1-char-reveal">M</span><span class="p1-char-reveal">R</span><span class="p1-char-reveal">.</span>
+<span class="p1-char-space">&nbsp;</span>
+<span class="p1-char-reveal">S</span><span class="p1-char-reveal">O</span><span class="p1-char-reveal">L</span><span class="p1-char-reveal">U</span><span class="p1-char-reveal">T</span><span class="p1-char-reveal">I</span><span class="p1-char-reveal">O</span><span class="p1-char-reveal">N</span>
+</h1>
+</div>
+</div>
+
+<!-- STAGE 5: Personal Signature Quote & CTA Button -->
+<div class="p1-phase p1-phase-5 hidden" id="p1Phase5">
+<p class="p1-text-line" id="p1-p5-l1">Problem detected?</p>
+<p class="p1-text-line" id="p1-p5-l2">Give him a minute.</p>
+<div class="p1-quote-card" id="p1QuoteCard">
+<p class="p1-quote-text">“Aray yar, tension kyun le rahi ho? Chill karo, ye easy scene ha abhi ho jayega. ”</p>
+</div>
+<div class="p1-cta-wrap" id="p1CtaWrap">
+<button class="p1-btn-cinematic" id="p1StartBtn" onclick="handleP1Enter()">
+<span class="p1-btn-label">ENTER THE SURPRISE</span>
+<svg class="p1-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+</button>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 2 — BIRTHDAY CELEBRATION (CINEMATIC REDESIGN) -->
+<!-- ============================================================ -->
+<section id="page2" class="page" data-page="2">
+<!-- Interactive Celebration Canvas (Stars, Sparks, Fireworks, Confetti) -->
+<canvas class="page-canvas" id="canvas2"></canvas>
+
+<!-- Ambient Backdrop Glow & Floating Balloons Layer -->
+<div class="p2-ambient-glow" id="p2AmbientGlow"></div>
+<div class="p2-balloons-layer" id="p2BalloonsLayer"></div>
+
+<div class="page-content p2-content">
+
+<!-- STAGE A: Playful Surprise Question -->
+<div class="p2-question-stage" id="p2QuestionPhase">
+<div class="p2-text-box" id="p2TextBox">
+<p class="p2-q-line" id="p2-q-l1">Okay... I made something special for you.</p>
+<p class="p2-q-line" id="p2-q-l2">But there's one little problem...</p>
+<p class="p2-q-line" id="p2-q-l3">You have to decide whether you want to see it.</p>
+</div>
+
+<!-- Initial YES / NO Choice Buttons -->
+<div class="p2-btn-group" id="p2InitialChoices">
+<button class="p2-btn-yes" id="p2BtnYes" onclick="p2AnswerYes()">
+<span>YES, SHOW ME ✨</span>
+</button>
+<button class="p2-btn-no" id="p2BtnNo" onclick="p2AnswerNo()">
+<span>NO</span>
+</button>
+</div>
+
+<!-- Playful NO Reaction Box -->
+<div class="p2-no-reaction-box hidden" id="p2NoReactionBox">
+<p class="p2-no-line" id="p2-no-l1">Excuse me?!</p>
+<p class="p2-no-line" id="p2-no-l2">Ye surprise banaya kis liye tha phir?</p>
+<p class="p2-no-line" id="p2-no-l3">Try again.</p>
+<button class="p2-btn-yes p2-btn-okay" id="p2BtnOkay" onclick="p2AnswerYes()">
+<span>OKAY, SHOW ME → ✨</span>
+</button>
+</div>
+</div>
+
+<!-- STAGE B: Interactive Cake & Birthday Celebration -->
+<div class="p2-celebration-stage hidden" id="p2CelebrationPhase">
+
+<!-- Birthday Title -->
+<div class="p2-title-wrap" id="p2BdayTitleWrap">
+<h1 class="p2-bday-title" id="p2BdayTitle">HAPPY 20TH BIRTHDAY, ALI! 🎂</h1>
+</div>
+
+<!-- Interactive Cake Display -->
+<div class="p2-cake-wrapper" id="p2CakeWrapper">
+<div class="p2-spotlight-glow" id="p2SpotlightGlow"></div>
+<div class="p2-cake-container" id="p2CakeContainer">
+<!-- Main Cake Base with Ambient Glow -->
+<img src="images/ali-birthday-cake.jpg" alt="Happy 20th Birthday Ali Cake" class="p2-cake-img-base" id="p2CakeBaseImg" />
+<!-- Candle Flames Glow Overlay (Lit Candles) -->
+<div class="p2-candle-flames" id="p2CandleFlames">
+<span class="candle-flame f1">🔥</span>
+<span class="candle-flame f2">🔥</span>
+<span class="candle-flame f3">🔥</span>
+</div>
+<!-- Smoke Puff Overlay (Appears when blown) -->
+<div class="p2-candle-smoke" id="p2CandleSmoke"></div>
+<!-- Golden Birthday Glow Aura -->
+<div class="p2-cake-aura" id="p2CakeAura"></div>
+<!-- Magical Candle Puff & Wish Sparkles Overlay -->
+<div class="p2-candle-sparkles" id="p2CandleSparkles"></div>
+</div>
+</div>
+
+<!-- Wish Prompt -->
+<p class="p2-wish-text" id="p2WishText">Make a wish... 🌟</p>
+
+<!-- Blow Candles Action Button -->
+<div class="p2-cut-btn-wrap" id="p2CutBtnWrap">
+<button class="p2-btn-cut" id="p2CutBtn" onclick="p2CutCake()">
+<span>BLOW THE CANDLES 🕯️✨</span>
+</button>
+</div>
+
+<!-- Wish / Dua Card (Appears after cake cut) -->
+<div class="p2-dua-card hidden" id="p2DuaCard">
+<p class="p2-dua-text">May Allah fulfill the wish you have made. 🤍✨</p>
+</div>
+
+<!-- Final Navigation Button (Appears after cake cut & Dua) -->
+<div class="p2-continue-wrap hidden" id="p2ContinueWrap">
+<button class="p2-btn-continue" id="p2ContinueBtn" onclick="goToPage(3)">
+<span>CONTINUE THE STORY →</span>
+</button>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 3 — HOW THIS FRIENDSHIP BECAME SPECIAL -->
+<!-- ============================================================ -->
+<!-- ============================================================ -->
+<!-- PAGE 3 — THE STORY BEHIND US -->
+<!-- ============================================================ -->
+<section id="page3" class="page" data-page="3">
+<canvas class="page-canvas" id="canvas3"></canvas>
+<div class="page-content p3-content">
+
+<!-- PAGE 3 OPENING HEADER -->
+<div class="p3-header" id="p3Header">
+<h2 class="p3-title">THE STORY BEHIND US</h2>
+<p class="p3-subtitle-1" id="p3Sub1">"Every special friendship has a beginning..."</p>
+<p class="p3-subtitle-2" id="p3Sub2">"Ours started somewhere rather unexpected."</p>
+</div>
+
+<!-- GLOWING JOURNEY TRACK & CHAPTERS -->
+<div class="p3-journey-container" id="p3JourneyContainer">
+<div class="p3-journey-line" id="p3JourneyLine">
+<div class="p3-line-pulse" id="p3LinePulse"></div>
+</div>
+
+<!-- CHAPTER 01: LINKEDIN -->
+<div class="p3-chapter p3-ch1" id="p3Ch1">
+<div class="p3-node" id="p3Node1">
+<svg viewBox="0 0 24 24" fill="currentColor" class="p3-node-icon"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+</div>
+<div class="p3-ch-card">
+<span class="p3-ch-tag">CHAPTER 01</span>
+<h3 class="p3-ch-title">LINKEDIN</h3>
+<p class="p3-ch-sub">Where it started...</p>
+<div class="p3-ch-body">
+<p class="p3-text-line">"A simple connection..."</p>
+<p class="p3-text-line p3-text-highlight">"Who knew a simple LinkedIn connection would eventually become something I genuinely value?"</p>
+</div>
+</div>
+</div>
+
+<!-- CHAPTER 02: WHATSAPP -->
+<div class="p3-chapter p3-ch2" id="p3Ch2">
+<div class="p3-node" id="p3Node2">
+<span class="p3-node-emoji">💬</span>
+</div>
+<div class="p3-ch-card">
+<span class="p3-ch-tag">CHAPTER 02</span>
+<h3 class="p3-ch-title">WHATSAPP 💬</h3>
+<p class="p3-ch-sub">Where the random conversations began...</p>
+
+<!-- Floating Topic Words -->
+<div class="p3-topics-cloud" id="p3TopicsCloud">
+<span class="p3-topic-pill" style="animation-delay: 0.1s">Career</span>
+<span class="p3-topic-pill" style="animation-delay: 0.3s">Projects</span>
+<span class="p3-topic-pill" style="animation-delay: 0.5s">Ideas</span>
+<span class="p3-topic-pill" style="animation-delay: 0.7s">Life</span>
+<span class="p3-topic-pill p3-pill-accent" style="animation-delay: 0.9s">Random Talks</span>
+</div>
+
+<div class="p3-ch-body">
+<p class="p3-text-line">"From a simple connection..."</p>
+<p class="p3-text-line p3-text-highlight">"to conversations that somehow became part of my everyday life."</p>
+</div>
+</div>
+</div>
+
+<!-- CHAPTER 03: THE BRO MOMENT -->
+<div class="p3-chapter p3-ch3" id="p3Ch3">
+<div class="p3-node" id="p3Node3">
+<span class="p3-node-emoji">🤝</span>
+</div>
+<div class="p3-bro-card">
+<div class="p3-bro-glow-bg"></div>
+<div class="p3-bro-reveal" id="p3BroReveal">
+<span class="p3-bro-word" id="p3Bro1">BRO.</span>
+<div class="p3-bro-beam" id="p3BroBeam"></div>
+<span class="p3-bro-word p3-bro-yes" id="p3Bro2">YES BROO.</span>
+</div>
+<div class="p3-bro-explain" id="p3BroExplain">
+<p class="p3-text-line">"Two simple words."</p>
+<p class="p3-text-line p3-text-highlight">"Somehow, they became one of my favourite little parts of our friendship."</p>
+</div>
+</div>
+</div>
+
+<!-- CHAPTER 04: THE TURNING POINT -->
+<div class="p3-chapter p3-ch4" id="p3Ch4">
+<div class="p3-node" id="p3Node4">
+<span class="p3-node-emoji">✨</span>
+</div>
+<div class="p3-ch-card">
+<span class="p3-ch-tag">CHAPTER 04</span>
+<h3 class="p3-ch-title">THE TURNING POINT</h3>
+<div class="p3-ch-body">
+<p class="p3-text-line">"And then... something changed."</p>
+<p class="p3-text-line">"We hadn't known each other for years."</p>
+<p class="p3-text-line">"Not even close."</p>
+<p class="p3-text-line">"But somehow, in a surprisingly short time..."</p>
+
+<!-- Background Glowing Breadcrumbs -->
+<div class="p3-breadcrumbs-bar" id="p3Breadcrumbs">
+<span class="p3-bc-item">LinkedIn</span>
+<span class="p3-bc-arrow">→</span>
+<span class="p3-bc-item">WhatsApp</span>
+<span class="p3-bc-arrow">→</span>
+<span class="p3-bc-item">Bro</span>
+</div>
+
+<div class="p3-turning-reveal">
+<p class="p3-glow-statement">THIS FRIENDSHIP STARTED TO FEEL DIFFERENT. 🤍</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- CHAPTER 05: BECOMING BEST FRIENDS -->
+<div class="p3-chapter p3-ch5" id="p3Ch5">
+<div class="p3-node p3-node-final" id="p3Node5">
+<span class="p3-node-emoji">🤍</span>
+</div>
+<div class="p3-ch-card p3-card-final">
+<span class="p3-ch-tag">CHAPTER 05</span>
+<div class="p3-ch-body">
+<p class="p3-text-line">"Somewhere along the way..."</p>
+<p class="p3-text-line">"A simple connection became conversations."</p>
+<p class="p3-text-line">"Conversations became understanding."</p>
+<p class="p3-text-line">"And somehow..."</p>
+
+<div class="p3-best-friends-reveal">
+<h2 class="p3-bf-title">WE BECAME BEST FRIENDS. 🤝</h2>
+</div>
+</div>
+</div>
+</div>
+
+<!-- FINAL PAGE 3 MESSAGE & SUMMARY FLOW -->
+<div class="p3-final-section" id="p3FinalSec">
+<!-- Vertical Journey Summary Flow -->
+<div class="p3-summary-flow">
+<span class="p3-sum-step">LINKEDIN</span>
+<span class="p3-sum-arrow">↓</span>
+<span class="p3-sum-step">WHATSAPP</span>
+<span class="p3-sum-arrow">↓</span>
+<span class="p3-sum-step">BRO</span>
+<span class="p3-sum-arrow">↓</span>
+<span class="p3-sum-step p3-sum-accent">BEST FRIENDS</span>
+</div>
+
+<div class="p3-final-quote-box">
+<p class="p3-quote-line-1">"Maybe some connections don't need years to become meaningful."</p>
+<p class="p3-quote-line-2">"Sometimes, the right people simply click. ✨"</p>
+</div>
+
+<!-- CONTINUE BUTTON -->
+<div class="p3-continue-wrap" id="p3ContinueWrap">
+<button class="btn-primary p3-btn-continue" onclick="goToPage(4)">
+<span>CONTINUE →</span>
+</button>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 4 — WHY YOU'RE DIFFERENT -->
+<!-- ============================================================ -->
+<!-- ============================================================ -->
+<!-- PAGE 4 — THE THINGS I NOTICE (WHY YOU'RE DIFFERENT) -->
+<!-- ============================================================ -->
+<section id="page4" class="page" data-page="4">
+<canvas class="page-canvas" id="canvas4"></canvas>
+<div class="page-content p4-content">
+
+<!-- PAGE 4 OPENING HEADER -->
+<div class="p4-header" id="p4Header">
+<h2 class="p4-title">THE THINGS I NOTICE</h2>
+<p class="p4-subtitle-1" id="p4Sub1">"There are certain things I genuinely admire about you..."</p>
+<p class="p4-subtitle-2" id="p4Sub2">"And these are some of them."</p>
+</div>
+
+<!-- CENTRAL CINEMATIC STAGE -->
+<div class="p4-stage" id="p4Stage" onclick="p4AdvanceQuality()">
+
+<!-- Central Glowing Origin Point -->
+<div class="p4-center-point" id="p4CenterPoint"></div>
+<div class="p4-light-beam" id="p4LightBeam"></div>
+
+<!-- SINGLE FOCUS QUALITY DISPLAY CARD (Central Discovery) -->
+<div class="p4-quality-display" id="p4QualityDisplay">
+<div class="p4-icon-container" id="p4IconWrap">
+<span class="p4-quality-icon" id="p4Icon">🧩</span>
+<div class="p4-icon-aura" id="p4IconAura"></div>
+</div>
+<span class="p4-quality-number" id="p4Num">QUALITY 01 / 06</span>
+<h3 class="p4-quality-title" id="p4Title">A PROBLEM SOLVER</h3>
+<p class="p4-quality-text" id="p4Text">"When I don't know what to do, you somehow make the problem feel solvable."</p>
+</div>
+
+<!-- BUILD-UP & CONVERGENCE RING (6 Symbols Orbiting & Merging) -->
+<div class="p4-convergence-ring" id="p4ConvergenceRing">
+<div class="p4-ring-item p4-ri-0" id="p4Ring0"><span>🧩</span><label>Solver</label></div>
+<div class="p4-ring-item p4-ri-1" id="p4Ring1"><span>🔥</span><label>Persistent</label></div>
+<div class="p4-ring-item p4-ri-2" id="p4Ring2"><span>💼</span><label>Dedicated</label></div>
+<div class="p4-ring-item p4-ri-3" id="p4Ring3"><span>🧭</span><label>Guide</label></div>
+<div class="p4-ring-item p4-ri-4" id="p4Ring4"><span>🤍</span><label>Caring</label></div>
+<div class="p4-ring-item p4-ri-5" id="p4Ring5"><span>💡</span><label>Inspiring</label></div>
+</div>
+
+<!-- MAIN REVEAL: MR. SOLUTION -->
+<div class="p4-mr-solution-reveal" id="p4MrSolutionReveal">
+<p class="p4-ms-intro" id="p4MsIntro">"Maybe that's why..."</p>
+<div class="p4-ms-title-wrap" id="p4MsTitleWrap">
+<h1 class="p4-ms-title" id="p4MsTitle">
+<span class="p4-letter" style="--i:0">M</span><span class="p4-letter" style="--i:1">R</span><span class="p4-letter" style="--i:2">.</span>
+<span class="p4-letter-space"></span>
+<span class="p4-letter" style="--i:3">S</span><span class="p4-letter" style="--i:4">O</span><span class="p4-letter" style="--i:5">L</span><span class="p4-letter" style="--i:6">U</span><span class="p4-letter" style="--i:7">T</span><span class="p4-letter" style="--i:8">I</span><span class="p4-letter" style="--i:9">O</span><span class="p4-letter" style="--i:10">N</span>
+</h1>
+<span class="p4-ms-puzzle-badge">🧩</span>
+</div>
+</div>
+
+<!-- FINAL MESSAGE & CONCLUSION -->
+<div class="p4-final-message" id="p4FinalMessage">
+<p class="p4-final-line-1" id="p4Final1">"Not because you have every answer..."</p>
+<p class="p4-final-line-2" id="p4Final2">"But because you don't give up until you find one."</p>
+
+<!-- CONTINUE BUTTON -->
+<div class="p4-continue-wrap" id="p4ContinueWrap">
+<button class="btn-primary p4-btn-continue" onclick="goToPage(5)">
+<span>CONTINUE →</span>
+</button>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 5 — CINEMATIC MEMORY THEATER -->
+<!-- ============================================================ -->
+<section id="page5" class="page" data-page="5">
+<canvas class="page-canvas" id="canvas5"></canvas>
+<div class="page-content p5-content">
+
+<!-- PAGE 5 OPENING HEADER -->
+<div class="p5-header" id="p5Header">
+<h2 class="p5-title">A LITTLE COLLECTION OF MEMORIES</h2>
+<p class="p5-subtitle-1" id="p5Sub1">"Some pictures are just pictures..."</p>
+<p class="p5-subtitle-2" id="p5Sub2">"Others become little pieces of a story. 🤍"</p>
+</div>
+
+<!-- MEMORY THEATER STAGE -->
+<div class="p5-theater-stage" id="p5Stage">
+
+<!-- TOP SPOTLIGHT GLOW CONE -->
+<div class="p5-spotlight-glow" id="p5SpotlightGlow"></div>
+
+<!-- BEFORE CAPTION (Appears while curtains are closed) -->
+<div class="p5-before-caption-wrap" id="p5BeforeCapWrap">
+<p class="p5-before-line-1" id="p5Before1"></p>
+<p class="p5-before-line-2" id="p5Before2"></p>
+</div>
+
+<!-- PREMIUM PHOTO FRAME DISPLAY CONTAINER -->
+<div class="p5-frame-wrapper" id="p5FrameWrapper">
+<div class="p5-photo-frame" id="p5Frame">
+<div class="p5-frame-inner">
+<img id="p5PhotoImg" src="images/photo1.jpg" alt="Memory Photo of Ali" class="p5-photo-img" />
+</div>
+<div class="p5-frame-mat"></div>
+<div class="p5-frame-metallic-border"></div>
+<div class="p5-frame-ambient-glow"></div>
+</div>
+</div>
+
+<!-- REALISTIC VELVET THEATER CURTAINS (OVERLAY) -->
+<div class="p5-curtain-left" id="p5CurtainLeft">
+<div class="p5-curtain-fold"></div>
+<div class="p5-curtain-fold"></div>
+<div class="p5-curtain-fold"></div>
+<div class="p5-curtain-valance"></div>
+<div class="p5-curtain-tassel"></div>
+</div>
+<div class="p5-curtain-right" id="p5CurtainRight">
+<div class="p5-curtain-fold"></div>
+<div class="p5-curtain-fold"></div>
+<div class="p5-curtain-fold"></div>
+<div class="p5-curtain-valance"></div>
+<div class="p5-curtain-tassel"></div>
+</div>
+
+<!-- AFTER CAPTION (Appears under photo once revealed) -->
+<div class="p5-after-caption-wrap" id="p5AfterCapWrap">
+<p class="p5-after-line" id="p5AfterCap"></p>
+</div>
+
+</div>
+
+<!-- NEXT MEMORY ACTION BUTTON -->
+<div class="p5-action-wrap" id="p5ActionWrap">
+<button class="btn-primary p5-btn-next" id="p5BtnNext" onclick="p5NextMemory()">
+<span>NEXT MEMORY →</span>
+</button>
+</div>
+
+<!-- FINAL EMOTIONAL CONCLUSION (Appears after final memory) -->
+<div class="p5-final-section" id="p5FinalSec">
+<p class="p5-final-line" id="p5Final1">6 pictures.</p>
+<p class="p5-final-line" id="p5Final2">Countless little moments.</p>
+<p class="p5-final-line p5-final-highlight" id="p5Final3">And one friendship I'm genuinely thankful for. 🤍</p>
+<p class="p5-final-subtext" id="p5Final4">But the photos aren't the only memories worth keeping…</p>
+
+<div class="p5-continue-wrap" id="p5ContinueWrap">
+<button class="btn-primary p5-btn-next-memory" id="p5BtnNextMemory" onclick="p5TransitionToPage6()">
+<span>THERE'S MORE TO THIS STORY → ✨</span>
+</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 6 — OUR UNFORGETTABLE WORDS (CINEMATIC MEMORY PRESERVE) -->
+<!-- ============================================================ -->
+<section id="page6" class="page" data-page="6">
+<canvas class="page-canvas" id="canvas6"></canvas>
+<div class="page-content p6-content">
+
+<!-- PAGE 6 OPENING HEADER -->
+<div class="p6-opening-container" id="p6Opening">
+<h2 class="p6-main-title">OUR UNFORGETTABLE WORDS</h2>
+<p class="p6-open-line" id="p6Open1">"Some conversations are ordinary…"</p>
+<p class="p6-open-line" id="p6Open2">"And then there are the ones you remember."</p>
+<p class="p6-open-line p6-open-highlight" id="p6Open3">"These are a few words from our friendship that stayed with me. 🤍"</p>
+
+<div class="p6-open-btn-wrap" id="p6OpenBtnWrap">
+<button class="btn-primary p6-btn-start" onclick="p6StartMemories()">
+<span>BEGIN THE MEMORIES →</span>
+</button>
+</div>
+</div>
+
+<!-- MAIN MEMORY STAGE CONTAINER -->
+<div class="p6-stage" id="p6Stage" style="display: none;">
+
+<!-- MEMORY 01: BRO -->
+<div class="p6-memory-card p6-m1" id="p6Mem1">
+<span class="p6-mem-tag">MEMORY 01</span>
+<h3 class="p6-mem-intro">"Sometimes, it's the smallest things…"</h3>
+
+<div class="p6-chat-box">
+<div class="p6-chat-row p6-you">
+<span class="p6-chat-author">YOU</span>
+<div class="p6-chat-bubble">Bro?</div>
+</div>
+<div class="p6-chat-row p6-ali" id="p6M1Ali">
+<span class="p6-chat-author">ALI</span>
+<div class="p6-chat-bubble">YES BROO.</div>
+</div>
+</div>
+
+<div class="p6-reflection-block">
+<p class="p6-reflection-1" id="p6M1Ref1">"Two simple words."</p>
+<p class="p6-reflection-2" id="p6M1Ref2">"But somehow… they became one of my favourite little parts of our friendship. 🤍"</p>
+</div>
+
+<div class="p6-action-wrap" id="p6M1ActionWrap">
+<button class="btn-primary p6-btn-next" onclick="p6ShowMemory(2)">
+<span>NEXT MEMORY →</span>
+</button>
+</div>
+</div>
+
+<!-- MEMORY 02: MR. SOLUTION -->
+<div class="p6-memory-card p6-m2" id="p6Mem2" style="display: none;">
+<div class="p6-bg-glow-cone"></div>
+<span class="p6-mem-tag">MEMORY 02</span>
+<h3 class="p6-mem-intro">"And then there were moments like this…"</h3>
+
+<div class="p6-chat-box">
+<div class="p6-chat-row p6-you">
+<span class="p6-chat-author">YOU</span>
+<div class="p6-chat-bubble">
+              Bro ye kya scene ho gaya<br />
+              Ab kya karun? Mujh se ye nahi ho raha.
+</div>
+</div>
+</div>
+
+<!-- LIGHT SWEEP & ALI PROMINENT QUOTE -->
+<div class="p6-ali-spotlight-quote" id="p6AliSpotlight">
+<div class="p6-quote-light-sweep" id="p6LightSweep"></div>
+<div class="p6-chat-row p6-ali p6-ali-featured">
+<span class="p6-chat-author">ALI</span>
+<div class="p6-chat-bubble p6-quote-bubble">
+              "Aray yar, tension kyun le rahi ho? Chill karo, ye easy scene ha abhi ho jayega. "
+</div>
+</div>
+</div>
+
+<!-- PROBLEM SOLVED STATUS BADGES -->
+<div class="p6-solution-flow" id="p6SolutionFlow">
+<div class="p6-status-chip p6-chip-detected" id="p6ChipDetected">PROBLEM DETECTED</div>
+<div class="p6-status-chip p6-chip-activated" id="p6ChipActivated">MR. SOLUTION ACTIVATED 🧩</div>
+<div class="p6-status-chip p6-chip-solved" id="p6ChipSolved">PROBLEM SOLVED ✓</div>
+</div>
+
+<div class="p6-reflection-block">
+<p class="p6-reflection-1" id="p6M2Ref1">"Some people give you an answer."</p>
+<p class="p6-reflection-2" id="p6M2Ref2">"Somehow, you make the problem feel solvable."</p>
+</div>
+
+<div class="p6-action-wrap" id="p6M2ActionWrap">
+<button class="btn-primary p6-btn-next" onclick="p6ShowMemory(3)">
+<span>NEXT MEMORY →</span>
+</button>
+</div>
+</div>
+
+<!-- MEMORY 03: THE DIAMOND -->
+<div class="p6-memory-card p6-m3" id="p6Mem3" style="display: none;">
+<div class="p6-spotlight-glow-center"></div>
+<span class="p6-mem-tag">MEMORY 03</span>
+<h3 class="p6-mem-intro">"And then… there are words you don't expect."</h3>
+<p class="p6-mem-subintro" id="p6M3Subintro">"Words that stay."</p>
+
+<!-- DIAMOND QUOTE REVEAL -->
+<div class="p6-diamond-quote-box" id="p6DiamondBox">
+<span class="p6-diamond-sparkle sp-top-left">✦</span>
+<span class="p6-diamond-sparkle sp-top-right">✨</span>
+<span class="p6-diamond-sparkle sp-bottom-left">✨</span>
+<span class="p6-diamond-sparkle sp-bottom-right">✦</span>
+<h2 class="p6-diamond-text">"Fortunately, I found a diamond." 💎</h2>
+</div>
+
+<div class="p6-m3-reflection-wrap" id="p6M3RefWrap">
+<p class="p6-m3-line-1" id="p6M3Line1">"You probably didn't know…"</p>
+<p class="p6-m3-line-2" id="p6M3Line2">"how much those words would mean to me."</p>
+<p class="p6-m3-line-3" id="p6M3Line3">"Some words become memories."</p>
+<p class="p6-m3-line-4" id="p6M3Line4">"And some memories become a part of your story. 🤍"</p>
+</div>
+
+<div class="p6-action-wrap" id="p6M3ActionWrap">
+<button class="btn-primary p6-btn-next" onclick="p6TriggerFinalReflection()">
+<span>CONTINUE →</span>
+</button>
+</div>
+</div>
+
+</div>
+
+<!-- FINAL PAGE 6 REFLECTION (SYMBOLS & CLOSING) -->
+<div class="p6-final-reflection" id="p6FinalReflection" style="display: none;">
+<div class="p6-symbols-trio">
+<div class="p6-sym-item" id="p6Sym1">
+<span class="p6-sym-icon">🤝</span>
+<span class="p6-sym-label">BRO</span>
+</div>
+<div class="p6-sym-item" id="p6Sym2">
+<span class="p6-sym-icon">🧩</span>
+<span class="p6-sym-label">MR. SOLUTION</span>
+</div>
+<div class="p6-sym-item" id="p6Sym3">
+<span class="p6-sym-icon">💎</span>
+<span class="p6-sym-label">DIAMOND</span>
+</div>
+</div>
+
+<div class="p6-final-words">
+<p class="p6-final-line-1" id="p6FinalLine1">"These weren't just conversations."</p>
+<p class="p6-final-line-2" id="p6FinalLine2">"They became little pieces of a friendship I'm genuinely thankful for. 🤍"</p>
+</div>
+
+<div class="p6-continue-wrap" id="p6FinalBtnWrap">
+<button class="btn-primary p6-btn-p7" id="p6BtnToP7" onclick="p6TransitionToPage7()">
+<span>THERE'S ONE MORE THING I WANT TO SAY → 💌</span>
+</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 7 — FINAL HIDDEN MESSAGE (LETTER) -->
+<!-- ============================================================ -->
+<section id="page7" class="page" data-page="7">
+<canvas class="page-canvas" id="canvas7"></canvas>
+<div class="page-content p7-content">
+
+<div class="p7-envelope-intro" id="p7-envelope-intro">
+<div class="p7-envelope" id="p7-envelope">
+<div class="envelope-body">
+<div class="envelope-flap"></div>
+<div class="envelope-heart">🤍</div>
+</div>
+</div>
+<p class="p7-envelope-text">A message I didn't know how to say out loud…</p>
+</div>
+
+<div class="p7-letter hidden" id="p7-letter">
+<div class="letter-paper">
+<div class="letter-content" id="letterContent">
+
+<p>Kuch log life mein aate hain aur bas ek normal part ban kar reh jaate hain.</p>
+<p>Aur kuch log bohat kam waqt mein bhi aisi jagah bana lete hain jahan unki presence genuinely matter karne lagti hai.</p>
+<p>Aap mere liye unhi logon mein se hain. 🤍</p>
+
+<br/>
+<p>Hamari friendship ko abhi itna zyada time nahi hua, lekin mujhe honestly ye cheez amazing lagti hai ke itne short time mein bhi hamara mindset itna match hua.</p>
+
+<br/>
+<p>Aap meri life mein pehle aise insan hain jiske saath mujhe laga ke:</p>
+<p class="letter-quote">"Haan, ye person meri way of thinking ko actually samajhta hai."</p>
+<p>Aur mere liye ye chhoti baat nahi hai.</p>
+
+<br/>
+<p>Aapne mujhe sirf career aur projects ke baare mein guide nahi kiya. Aapne mujhe Claude, Antigravity, prompting aur vibe coding jaisi cheezein introduce karwain.</p>
+
+<br/>
+<p>Aur jab main kisi chhoti si problem par bhi tension lene lagti hoon, aapka woh simple sa:</p>
+<p class="letter-quote">"Aray yar, tension kyun le rahi ho? Chill karo, ye easy scene ha abhi ho jayega. "</p>
+<p>Pata nahi kyun, lekin mujhe genuinely relax kar deta hai.</p>
+
+<br/>
+<p>Shayad isi liye Mr. Solution naam itna perfectly fit hota hai. 🧩</p>
+
+<br/>
+<p>Aur ek cheez jo main aap mein genuinely admire karti hoon:</p>
+<p>Aap apne kaam ko seriously lete hain, hard work karte hain, aur jab koi cheez samajh na aaye tab bhi easily give up nahi karte.</p>
+<p>Ye quality mujhe sirf impress nahi karti — mujhe inspire bhi karti hai.</p>
+
+<br/>
+<p class="letter-section-header">🤍 But there's something more...</p>
+<br/>
+<p>Mujhe nahi lagta ke aapko realize hua hai ke ye friendship mere liye kitni special hai.</p>
+<p>Aap mere brother ke baad pehle male friend hain jinke saath friendship karte hue mujhe kabhi uncomfortable ya scared feel nahi hua.</p>
+<p>Aur sabse special baat ye hai ke meri life mein pehli baar mujhe koi aisa person mila jiska mindset mere mindset se itna match karta hai.</p>
+<p>Aur honestly, ye mere liye bohat matter karta hai.</p>
+
+<br/>
+<p>Main ye nahi chahti ke hamari friendship hamesha perfect ho.</p>
+<p>Main bas ye chahti hoon ke ye genuine aur real rahe. 🤍</p>
+
+<br/>
+<p>Kyun ke mujhe apne baare mein pata hai.</p>
+<p>Kabhi main immature ho jati hoon, kabhi stubborn, kabhi emotional… aur kabhi bina soche kuch keh deti hoon.</p>
+<p>Is liye agar kabhi aisa ho...</p>
+
+<br/>
+<p>Aapko mujh par ghussa karne ki permission hai. 😤<br/>
+          Mujhe dantne ki bhi permission hai.<br/>
+          Mujh se argue karne ki bhi permission hai.<br/>
+          Aur agar main wrong hoon to mujhe clearly batane ki bhi.</p>
+
+<br/>
+<p>Bas ek request hai...</p>
+<p class="letter-highlight">Kisi ek bad moment ko hamari poori friendship se bara mat hone dena.</p>
+
+<br/>
+<p>Agar kabhi misunderstanding ho, to baat karenge.<br/>
+          Ghussa hoga to express karenge.<br/>
+          Galti hogi to samjhayenge.<br/>
+          Aur phir dono mil kar cheezon ko better karne ki koshish karenge.</p>
+
+<br/>
+<p>Agar kabhi main immature behave karun, to meri friendship ko meri ek bad moment se judge mat karna.</p>
+<p class="letter-bold">Relation sambhal lena 🤝</p>
+
+<br/>
+<p class="letter-section-header">🤍 One thing I truly believe...</p>
+<br/>
+
+<p class="letter-highlight">I consider you as a beautiful gift of Allah in my life. 🤍</p>
+<p>Isliye nahi ke aap perfect hain.</p>
+<p>Balki isliye ke aapki friendship ne meri life mein ek genuinely achhi jagah banayi hai.</p>
+
+<br/>
+<p>Aur main dil se dua karti hoon ke Allah aapko career mein extraordinary success de, aapko hamesha khush rakhe, aapke raste mein ache log aur amazing opportunities laaye, aur aapke har genuine dream ko poora kare. ✨</p>
+
+<br/>
+<p>I hope life aapko woh sab de jo aap deserve karte hain —<br/>success, happiness, good people, beautiful opportunities, aur aapke har genuine dream ko poora hone ka chance.</p>
+
+<br/>
+<p>Aur meri ek simple si wish aur hai:</p>
+<p>Aap hamesha aise hi rahen — hardworking, respectful, caring, understanding… aur mere liye wahi Mr. Solution. 🧩</p>
+
+<br/>
+<p class="letter-section-header"> And about the future...</p>
+<br/>
+
+<p>Abhi humne saath project bhi nahi banaya.</p>
+<p>Lekin mujhe genuinely acha lagta hai ye soch kar ke ek din hum dono apna first project together banayenge.</p>
+<p>Aur shayad us waqt bhi main kisi point par bolungi:</p>
+<p class="letter-quote">"Bro, ye kya scene ho gaya?"</p>
+<p>Aur mujhe almost pata hai aapka jawab kya hoga:</p>
+<p class="letter-quote">"Easy scene hai."</p>
+
+<br/>
+<p class="letter-section-header">🤍 Finally...</p>
+<br/>
+
+<p>Thank you, Ali.</p>
+<p>For coming into my life unexpectedly.<br/>
+          For making this friendship meaningful in such a short time.<br/>
+          For guiding me.<br/>
+          For understanding me.<br/>
+          And simply… for being my friend.</p>
+
+<br/>
+<p>Aur shayad main ye sab normally itni easily na keh paun...</p>
+<p>Lekin aaj kehna zaroori tha.</p>
+
+<br/>
+<p class="letter-birthday">Happy 20th Birthday, Ali! 🎂✨</p>
+
+<br/>
+<p class="letter-signature">— From your sometimes immature, sometimes stubborn, but genuinely grateful best friend. 🫶</p>
+
+</div>
+</div>
+<button class="btn-primary mt-3" onclick="goToPage(8)">
+<span>One Last Thing</span>
+<svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+</button>
+</div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 8 — FRIENDSHIP AGREEMENT -->
+<!-- ============================================================ -->
+<section id="page8" class="page" data-page="8">
+<canvas class="page-canvas" id="canvas8"></canvas>
+<div class="page-content p8-content">
+
+<!-- OPENING CINEMATIC REVEAL OVERLAY -->
+<div class="p8-opening-overlay" id="p8OpeningOverlay">
+<div class="p8-reveal-box" id="p8RevealBox">
+<p class="p8-reveal-line" id="p8RevLine1">WAIT...</p>
+<p class="p8-reveal-line" id="p8RevLine2">There's one very important thing left.</p>
+<p class="p8-reveal-line" id="p8RevLine3">Before this birthday surprise ends...</p>
+<p class="p8-reveal-line p8-highlight" id="p8RevLine4">YOU HAVE ONE LAST DOCUMENT TO SIGN.</p>
+<div class="p8-reveal-action hidden" id="p8RevAction">
+<button class="btn-primary p8-seal-btn" id="p8OpenDocBtn" onclick="p8RevealDocument()">
+<span>REVEAL AGREEMENT 📜</span>
+</button>
+</div>
+</div>
+</div>
+
+<!-- MAIN AGREEMENT DOCUMENT CONTAINER -->
+<div class="p8-document-wrapper hidden" id="p8DocumentWrapper">
+<!-- Background Ambient Glow & Spotlight -->
+<div class="p8-doc-spotlight"></div>
+
+<!-- Premium Sealed Document Surface -->
+<div class="p8-agreement-doc" id="p8AgreementDoc">
+
+<!-- Metallic Silver & Gold Decorative Borders & Corners -->
+<div class="p8-doc-border-inner"></div>
+<div class="p8-corner corner-tl"></div>
+<div class="p8-corner corner-tr"></div>
+<div class="p8-corner corner-bl"></div>
+<div class="p8-corner corner-br"></div>
+
+<!-- Header Section -->
+<div class="p8-doc-header">
+<div class="p8-seal-crest" id="p8SealCrest">
+<div class="seal-outer-ring"></div>
+<div class="seal-inner-emblem">🤝</div>
+<div class="seal-ribbon">OFFICIAL</div>
+</div>
+<div class="p8-doc-id-badge">AGREEMENT ID: MR-SOLUTION-20</div>
+<h2 class="p8-doc-title">THE OFFICIAL FRIENDSHIP AGREEMENT</h2>
+<p class="p8-doc-lead">Between two people who somehow went from a simple connection to a friendship worth keeping.</p>
+<p class="p8-doc-subtitle">Please read carefully before signing. 🤝</p>
+<div class="p8-doc-divider">
+<span class="p8-div-line"></span>
+<span class="p8-div-star">✦</span>
+<span class="p8-div-line"></span>
+</div>
+</div>
+
+<!-- Rule Reveal System (Articles 01 to 04) -->
+<div class="p8-articles-container" id="p8ArticlesContainer">
+
+<!-- Article 1 -->
+<div class="p8-article-card hidden" id="article1" data-article="1">
+<div class="p8-art-head">
+<span class="p8-art-badge">ARTICLE 01</span>
+<span class="p8-art-status">UNLOCKED</span>
+</div>
+<p class="p8-art-body">Aap mujh se naraz ho sakte hain. 😤</p>
+</div>
+
+<!-- Article 2 -->
+<div class="p8-article-card hidden" id="article2" data-article="2">
+<div class="p8-art-head">
+<span class="p8-art-badge">ARTICLE 02</span>
+<span class="p8-art-status">UNLOCKED</span>
+</div>
+<p class="p8-art-body">Hamari arguments ho sakti hain.</p>
+</div>
+
+<!-- Article 3 -->
+<div class="p8-article-card hidden" id="article3" data-article="3">
+<div class="p8-art-head">
+<span class="p8-art-badge">ARTICLE 03</span>
+<span class="p8-art-status">UNLOCKED</span>
+</div>
+<p class="p8-art-body">Kabhi kabhi dono mein se koi stubborn bhi ho sakta hai.</p>
+</div>
+
+<!-- Article 4 -->
+<div class="p8-article-card hidden" id="article4" data-article="4">
+<div class="p8-art-head">
+<span class="p8-art-badge">ARTICLE 04</span>
+<span class="p8-art-status">UNLOCKED</span>
+</div>
+<p class="p8-art-body">Misunderstandings ho sakti hain…<br/>lekin kabhi friendship khatam nahi ho sakti. 🤝</p>
+</div>
+
+</div>
+
+<!-- Article Navigation Control -->
+<div class="p8-article-nav" id="p8ArticleNav">
+<button class="btn-primary p8-next-art-btn" id="p8NextArtBtn" onclick="p8AdvanceArticle()">
+<span id="p8NextArtText">READ ARTICLE 01 →</span>
+</button>
+</div>
+
+<!-- Decision Section (After all 4 articles are revealed) -->
+<div class="p8-decision-section hidden" id="p8DecisionSection">
+<p class="p8-decision-intro">SO...</p>
+<h3 class="p8-decision-question">Do you accept this friendship agreement?</h3>
+<div class="p8-decision-btns">
+<button class="p8-btn-accept" id="btn-accept" onclick="p8AgreeAccept()">
+<span>I ACCEPT 🤝</span>
+</button>
+<button class="p8-btn-deny" id="btn-deny" onclick="p8AgreeDeny()">
+<span>I DON'T ACCEPT</span>
+</button>
+</div>
+</div>
+
+<!-- Rejection Reaction ("I DON'T ACCEPT") -->
+<div class="p8-deny-reaction hidden" id="p8DenyReaction">
+<div class="p8-deny-box">
+<p class="p8-deny-heading">EXCUSE ME?!</p>
+<p class="p8-deny-sub">Ye option seriously consider bhi kaise kiya?</p>
+<button class="p8-btn-tryagain" onclick="p8AgreeTryAgain()">
+<span>TRY AGAIN →</span>
+</button>
+</div>
+</div>
+
+<!-- Signature Prompt & Input Section -->
+<div class="p8-sign-section hidden" id="p8SignSection">
+<div class="p8-sign-box">
+<p class="p8-sign-congrats">GOOD DECISION. 🤝</p>
+<p class="p8-sign-pause">But we're not finished yet…</p>
+<div class="p8-doc-divider">
+<span class="p8-div-line"></span>
+<span class="p8-div-star">✦</span>
+<span class="p8-div-line"></span>
+</div>
+<h3 class="p8-sign-title">OFFICIALLY SIGN THE AGREEMENT</h3>
+<p class="p8-sign-sub">Type your name/signature below.</p>
+
+<div class="p8-input-wrapper">
+<input type="text" id="signatureInput" class="p8-signature-input" placeholder="Ali" maxlength="30" autocomplete="off" />
+<div class="p8-input-glow"></div>
+</div>
+
+<div class="p8-sign-error hidden" id="p8SignError">
+<p>Wait... an unsigned agreement?!</p>
+<p>Your signature is still missing.</p>
+</div>
+
+<button class="p8-btn-sign" onclick="p8SignAgreement()">
+<span>SIGN THE AGREEMENT ✍️</span>
+</button>
+</div>
+</div>
+
+<!-- Final Official Signed State -->
+<div class="p8-signed-state hidden" id="p8SignedState">
+
+<!-- Official Wax / Metallic Stamp Seal -->
+<div class="p8-official-seal-wrap" id="p8OfficialSeal">
+<div class="p8-stamp-ring">
+<div class="p8-stamp-text">OFFICIALLY SIGNED</div>
+<div class="p8-stamp-check">✓</div>
+</div>
+</div>
+
+<div class="p8-final-badge-wrap">
+<span class="p8-final-badge">FRIENDSHIP AGREEMENT</span>
+<span class="p8-final-status">OFFICIALLY SIGNED ✓</span>
+</div>
+
+<div class="p8-signature-display">
+<span class="p8-sig-label">Signed by:</span>
+<span class="p8-sig-value" id="acceptedSig">Ali</span>
+</div>
+
+<div class="p8-status-lock">
+<span class="status-badge-locked">Status: LOCKED 🔒</span>
+<span class="p8-effective-text">Effective immediately. 🤝</span>
+</div>
+
+<!-- Final Page 8 Outro Sequence -->
+<div class="p8-final-outro hidden" id="p8FinalOutro">
+<p class="p8-outro-l1">Well...</p>
+<p class="p8-outro-l2">Now it's official.</p>
+<p class="p8-outro-l3">One last page remains.</p>
+
+<button class="btn-primary p8-btn-page9" id="p8BtnPage9" onclick="p8ProceedToPage9()">
+<span>ONE LAST THING → 🤍</span>
+</button>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<!-- Transition overlay sweep for Page 8 -> 9 -->
+<div class="p8-sweep-overlay" id="p8SweepOverlay"></div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 9 — FINAL WORDS -->
+<!-- ============================================================ -->
+<section id="page9" class="page" data-page="9">
+<canvas class="page-canvas" id="canvas9"></canvas>
+<div class="page-content p9-content">
+<div class="p9-sequence" id="p9-sequence">
+<p class="p9-line" id="p9-l1">Ab shayad aap soch rahe honge…</p>
+<p class="p9-line p9-italic" id="p9-l2">"Maine to mana kiya tha, phir bhi ye surprise kyun banaya?"</p>
+<p class="p9-line" id="p9-l3">Simple si wajah hai…</p>
+<p class="p9-line" id="p9-l4">Jin logon ki life mein importance hoti hai,<br/>unhein sirf yaad nahi kiya jata…</p>
+<p class="p9-line p9-highlight" id="p9-l5">"unhein special feel bhi karwaya jata hai. 🤍"</p>
+<p class="p9-line" id="p9-l6">Aur aap meri life mein unhi important logon mein se hain.</p>
+<p class="p9-line" id="p9-l7">Isliye aapke 'no' kehne ke bawajood ye surprise banana koi zid nahi thi…</p>
+<p class="p9-line" id="p9-l8">Bas ek chhoti si koshish thi aapko ye feel karwane ki ke…</p>
+
+<p class="p9-line p9-closing-l1" id="p9-l9">That's it.</p>
+<p class="p9-line p9-closing-l2" id="p9-l10">No complicated reason.</p>
+
+</div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 10 — FINAL BIRTHDAY ENDING -->
+<!-- ============================================================ -->
+<section id="page10" class="page" data-page="10">
+<canvas class="page-canvas" id="canvas10"></canvas>
+<div class="page-content p10-content">
+<div class="p10-sequence" id="p10-sequence">
+
+<div class="p10-you-matter hidden" id="p10-you-matter">
+<div class="you-matter-glow"></div>
+<h1 class="you-matter-text">YOU MATTER. 🤍</h1>
+</div>
+
+<div class="p10-after-pause hidden" id="p10-after-pause">
+<p class="p10-hbd-text" id="p10-hbd">Happy Birthday once again, Ali. 🎂✨</p>
+
+<p class="p10-signature" id="p10-sig">— From your sometimes immature, sometimes stubborn, but genuinely grateful best friend. 🫶</p>
+
+<div class="p10-the-end" id="p10-the-end">THE END</div>
+
+<p class="p10-sub-end" id="p10-sub-end">Or maybe just the beginning of another memory. ✨</p>
+
+<div class="p10-actions-wrap" id="p10-actions">
+<button class="btn-primary p10-btn-replay" onclick="goToPage(1)">
+<span>EXPERIENCE AGAIN ↺</span>
+</button>
+<button class="btn-ghost p10-btn-back" onclick="goToPrevPage()">
+<span>← BACK</span>
+</button>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
